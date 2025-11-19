@@ -13,6 +13,66 @@ The **PolkaMesh Phala Phat Contract** is a confidential off-chain worker that ex
 - **📊 Statistics**: Comprehensive execution metrics and monitoring
 - **🔗 Chain Integration**: Seamless interaction with PolkaMesh contracts
 
+---
+
+## 🚀 Deployment Status
+
+### ✅ Live Deployment
+
+The Phat Contract is **currently deployed and active** on Phala Cloud:
+
+| Property | Value |
+|----------|-------|
+| **Status** | ✅ Active |
+| **App ID** | `app_4c48fd1fdbcf7495e90758c6b4108faf1205c3a3` |
+| **CVM ID** | `18501` |
+| **Name** | `polkamesh-executor` |
+| **Platform** | Phala Cloud (CVM) |
+| **Resources** | 1 vCPU, 2048 MB RAM, 40 GB Disk |
+| **Dstack Version** | `dstack-0.3.6` |
+| **Deployed** | November 19, 2024 |
+| **Dashboard** | [View on Phala Cloud](https://cloud.phala.network/dashboard/cvms/app_4c48fd1fdbcf7495e90758c6b4108faf1205c3a3) |
+
+### Integration Configuration
+
+Add these environment variables to your project:
+
+```bash
+# Phala Phat Contract
+PHALA_PHAT_CONTRACT_ID=app_4c48fd1fdbcf7495e90758c6b4108faf1205c3a3
+PHALA_WORKER_ENDPOINT=https://phala-worker-api.phala.network
+PHALA_CLUSTER_ID=poc6-testnet
+
+# On-Chain Coordinator
+PHALA_JOB_PROCESSOR=5HrKZAiTSAFcuxda89kSD77ZdygRUkufwRnGKgfGFR4NC2np
+```
+
+### Quick Start
+
+```bash
+# Check deployment status
+npx phala cvms get app_4c48fd1fdbcf7495e90758c6b4108faf1205c3a3
+
+# View logs (coming soon)
+# npx phala cvms logs app_4c48fd1fdbcf7495e90758c6b4108faf1205c3a3
+```
+
+### Build from Source
+
+```bash
+# Install Rust nightly (required for pink v0.4)
+rustup toolchain install nightly
+rustup target add wasm32-unknown-unknown --toolchain nightly
+
+# Clean and build
+cargo clean
+cargo +nightly build --release --target wasm32-unknown-unknown
+
+# Output: target/wasm32-unknown-unknown/release/phala_phat_contract.wasm (408 bytes)
+```
+
+---
+
 ## 🏗️ Architecture
 
 ### System Flow
