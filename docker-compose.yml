@@ -1,0 +1,24 @@
+px phala cvms delete app_c193e72fd3e37e853accb9edf66d78bc0c22281aversion: "3.8"
+
+services:
+  phat-contract:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - RUST_LOG=info
+      - PHALA_ENDPOINT=wss://api.phala.network/ws
+      - CONTRACT_ADDRESS=5HrKZAiTSAFcuxda89kSD77ZdygRUkufwRnGKgfGFR4NC2np
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+
+    # Resource constraints for Phala Cloud
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 2G
+        reservations:
+          cpus: "0.5"
+          memory: 1G
